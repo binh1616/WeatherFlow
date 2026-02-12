@@ -1,0 +1,26 @@
+# Virtual environment
+venv/
+
+# Python cache
+./app/__pycache__/
+
+# document files
+cmd.sh
+flink-cdc-3.5.0-bin.tar.gz
+flink-weather-alert.sql
+flink-weather-data.sql
+mysql.sql
+new.json
+simple_test.py 
+try.py 
+
+#mysql-docker
+mysql-data/*
+
+#kafka-docker
+kafka-data/*
+
+#flink-docker
+flink-lib/*
+flink-checkpoints/*
+flink-usrlib/*

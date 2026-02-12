@@ -1,0 +1,18 @@
+# Sử dụng base image Python 3.10 (sẽ là 3.10.x mới nhất, tương thích 3.10.19)
+FROM python:3.10
+
+# Set working dir
+WORKDIR /app
+
+# Copy requirements.txt trước để cache install
+COPY requirements.txt .
+
+
+    
+# Tạo virtualenv và install dependencies
+RUN python -m venv /opt/venv && \
+    . /opt/venv/bin/activate && \
+    pip install --upgrade pip && \
+    pip install -r requirements.txt 
+
+
