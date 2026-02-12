@@ -17,7 +17,7 @@ WeatherFlow is a powerful **real-time** weather data processing system built wit
 
 ### System Architecture
 
-![WeatherFlow System Architecture](WeatherFlow.pdf)
+![WeatherFlow System Architecture](WeatherFlow(1).jpg)
 
 
 
