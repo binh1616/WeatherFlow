@@ -2,7 +2,8 @@
 venv/
 
 # Python cache
-./app/__pycache__
+__pycache__/
+
 
 # document files
 cmd.sh
