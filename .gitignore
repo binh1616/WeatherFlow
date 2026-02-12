@@ -22,5 +22,7 @@ kafka-data/*
 
 #flink-docker
 flink-lib/*
+!flink-lib/.gitkeep
 flink-checkpoints/*
 flink-usrlib/*
+!flink-usrlib/.gitkeep
