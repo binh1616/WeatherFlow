@@ -15,9 +15,9 @@ WeatherFlow is a powerful **real-time** weather data processing system built wit
 - Python background services for API fetching, database initialization, Kafka topic creation
 - Full Docker Compose stack: Flink standalone cluster, Kafka, MySQL, Python service
 
-### Architecture
+### System Architecture
 
-
+![WeatherFlow System Architecture](weatherflow-architecture.jpg)
 
 
 
