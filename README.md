@@ -44,15 +44,41 @@ WeatherFlow is a powerful **real-time** weather data processing system built wit
    ```bash
    git clone https://github.com/yourusername/weatherflow.git
    cd weatherflow
-
+   ```
 
 2.Start the entire stack:
+  ```bash
   docker compose up -d --build
-
-Access Flink UI:
-
+  ```
+3.Wait ~2 minutes for all services (Flink cluster, Kafka, MySQL, Python ingestion) to initialize and start processing data
+4.Access the Flink Web UI to monitor jobs:
+  ```
 http://localhost:8081
+```
+5.View real-time data flowing into Kafka topics:
+```
+# Current weather observations
+docker compose exec kafka kafka-console-consumer --bootstrap-server kafka:9092 --topic weather-current-observations --from-beginning
 
+# Weather alerts
+docker compose exec kafka kafka-console-consumer --bootstrap-server kafka:9092 --topic weather-alerts --from-beginning
+
+# CDC changelog (Debezium JSON format - inserts/updates/deletes)
+docker compose exec kafka kafka-console-consumer --bootstrap-server kafka:9092 --topic weather-alerts-changelog --from-beginning
+```
+Note: Press Ctrl+C to stop the consumer when you're done viewing.
+6.After ~1 hour (due to the 1-hour tumbling window in the aggregation job), check aggregated data in MySQL:
+```
+# Aggregated averages per city (temperature, humidity, wind, pressure)
+docker compose exec mysql mysql -u flink -pflink flink_db -e "SELECT * FROM weather_avg_per_minute LIMIT 10;"
+
+# Active weather alerts with enrichment
+docker compose exec mysql mysql -u flink -pflink flink_db -e "SELECT * FROM weather_active_alerts LIMIT 10;"
+```
+7.When finished (to clean up and remove volumes for a fresh restart):
+```
+docker compose down -v
+```
 
 
 License
