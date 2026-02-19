@@ -22,7 +22,7 @@ def run():
 
         # ------------------ TABLE 1 ------------------
         cursor.execute("""
-        CREATE TABLE IF NOT EXISTS weather_avg_per_minute (
+        CREATE TABLE IF NOT EXISTS weather_avg_per_hours (
             window_start DATETIME,
             window_end DATETIME,
             city VARCHAR(100),

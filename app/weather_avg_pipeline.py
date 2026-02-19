@@ -83,7 +83,7 @@ CREATE TABLE weather_avg_sink (
 ) WITH (
     'connector' = 'jdbc',
     'url' = 'jdbc:mysql://mysql:3306/flink_db?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC',
-    'table-name' = 'weather_avg_per_minute',
+    'table-name' = 'weather_avg_per_hours',
     'username' = 'flink',
     'password' = 'flink',
     'sink.buffer-flush.max-rows' = '1',
@@ -118,5 +118,5 @@ GROUP BY
 statement_set.execute()
 print("-> Job aggregation đã được submit và đang chạy.")
 print("  Kiểm tra Flink UI: http://jobmanager:8081")
-print("  Theo dõi table weather_avg_per_minute trong MySQL để xem dữ liệu.")
+print("  Theo dõi table weather_avg_per_hours trong MySQL để xem dữ liệu.")
 print("  Để dừng job: dùng Flink UI hoặc lệnh flink cancel <job_id>")

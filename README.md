@@ -85,7 +85,7 @@ Note: Press Ctrl+C to stop the consumer when you're done viewing.
 
    ```bash
    # Aggregated averages per city (temperature, humidity, wind, pressure)
-   docker compose exec mysql mysql -u flink -pflink flink_db -e "SELECT * FROM weather_avg_per_minute LIMIT 10;"
+   docker compose exec mysql mysql -u flink -pflink flink_db -e "SELECT * FROM weather_avg_per_hours LIMIT 10;"
 
    # Active weather alerts with enrichment
    docker compose exec mysql mysql -u flink -pflink flink_db -e "SELECT * FROM weather_active_alerts LIMIT 10;"
