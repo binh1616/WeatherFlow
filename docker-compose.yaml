@@ -45,7 +45,7 @@ services:
       - ./app:/app/python_code  # Mount thư mục host vào container để edit code realtime (dev mode)
     environment:
       - PYTHONUNBUFFERED=1  # Để log realtime
-    command: ["/bin/bash", "-c", "source /opt/venv/bin/activate && python python_code/init_flink_mysql.py && python python_code/create_topics.py && (python python_code/api_weather.py & python python_code/api_alert.py) && tail -f /dev/null"]    
+    command: ["/bin/bash", "-c", "source /opt/venv/bin/activate && python python_code/create_table_mysql.py && python python_code/create_topics.py && (python python_code/api_weather.py & python python_code/api_alert.py) && tail -f /dev/null"]    
     networks:
       - flink-net
   mysql:
@@ -80,7 +80,7 @@ services:
     container_name: flink-python
     volumes:
       - ./app:/app
-    command: ["/bin/bash","-c","echo 'Waiting 5 minutes...'; sleep 100 && source /opt/venv/bin/activate && (flink run -m jobmanager:8081 -py cdc_flink.py & flink run -m jobmanager:8081 -py alerts_pipeline.py & flink run -m jobmanager:8081 -py pyflink_weather_avg.py) & tail -f /dev/null"]
+    command: ["/bin/bash","-c","echo 'Waiting 5 minutes...'; sleep 100 && source /opt/venv/bin/activate && (flink run -m jobmanager:8081 -py cdc_pipline.py & flink run -m jobmanager:8081 -py alerts_pipeline.py & flink run -m jobmanager:8081 -py weather_avg_pipeline.py) & tail -f /dev/null"]
     networks:
       - flink-net
 
