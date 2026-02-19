@@ -44,8 +44,8 @@ WeatherFlow is a powerful **real-time** weather data processing system built wit
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/weatherflow.git
-   cd weatherflow
+   git clone https://github.com/binh1616/WeatherFlow.git
+   cd Weatherflow
    ```
 
 2. Start the entire stack:
