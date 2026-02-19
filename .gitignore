@@ -15,13 +15,14 @@ new.json
 simple_test.py 
 try.py 
 
-#mysql-docker
+# MySQL data
 mysql-data/*
+!mysql-data/.gitkeep
 
-#kafka-docker
+# Kafka data
 kafka-data/*
+!kafka-data/.gitkeep
 
-#flink-docker
 
 
 
